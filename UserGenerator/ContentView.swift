@@ -83,7 +83,7 @@ struct ContentView: View {
                     .frame(width: 140, height: 140)
                     .clipShape(Circle())
             }
-            //유저 이름
+            //유저 정보
             Text(title)
                 .foregroundColor(.gray)
                 .padding(.top, 10)
