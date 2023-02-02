@@ -15,13 +15,13 @@ struct Menu: View {
     
     var body: some View {
         Button {
-            btnAction(img: imgName)
+            menuChange(img: imgName)
         } label: {
             Image(systemName: imgName)
                 .frame(width: 30, height: 20)
         }
     }
-    func btnAction(img: String) {
+    func menuChange(img: String) {
         switch img{
         case "person":
             title = "Hi, My name is"
@@ -64,6 +64,8 @@ struct MyBtnStyle: ButtonStyle {
 struct ContentView: View {
     @State private var title = "Hi, My name is"
     @State private var info = "Hong Gil Dong"
+    @State private var profileImg = "person"
+    
     private let btnImg = [
         "person", "mail", "calendar",
         "map", "phone", "lock",
@@ -71,16 +73,24 @@ struct ContentView: View {
     var body: some View {
         VStack{
             //프로필 이미지
-            Circle()
-                .frame(width: 150, height: 150)
+            ZStack{
+                Circle()
+                    .foregroundColor(.white)
+                    .overlay(Circle().stroke())
+                    .frame(width: 150, height: 150)
+                Image(profileImg)
+                    .resizable()
+                    .frame(width: 140, height: 140)
+                    .clipShape(Circle())
+            }
             //유저 이름
             Text(title)
                 .foregroundColor(.gray)
                 .padding(.top, 10)
             Text(info)
                 .font(.largeTitle)
-            //메뉴버튼
-            HStack{
+            //메뉴 버튼
+            HStack(spacing: 20){
                 ForEach(0..<6, id: \.self) { i in
                     Menu(title: $title, info: $info, imgName: btnImg[i])
                 }
@@ -88,7 +98,7 @@ struct ContentView: View {
             .padding(.bottom, 10)
             //새로운 유저 불러오는 버튼
             Button {
-                //todo: "New" btton action
+                newUser()
             } label: {
                 Text("New")
             }
@@ -96,6 +106,10 @@ struct ContentView: View {
         }
         .padding(.horizontal, 100)
         .padding(50)
+    }
+    func newUser() {
+        //todo: "New" btton action
+        profileImg = "person"
     }
 }
 
