@@ -14,6 +14,9 @@
 		F586360C298A5EE300A4E32B /* UserGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586360B298A5EE300A4E32B /* UserGeneratorTests.swift */; };
 		F5863616298A5EE300A4E32B /* UserGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5863615298A5EE300A4E32B /* UserGeneratorUITests.swift */; };
 		F5863618298A5EE300A4E32B /* UserGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5863617298A5EE300A4E32B /* UserGeneratorUITestsLaunchTests.swift */; };
+		F58C11E6298C8FA200D784A3 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F58C11E5298C8FA200D784A3 /* URLImage */; };
+		F58C11E8298C8FA200D784A3 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = F58C11E7298C8FA200D784A3 /* URLImageStore */; };
+		F58C11EA298C904700D784A3 /* ProfilingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C11E9298C904700D784A3 /* ProfilingView.swift */; };
 		F5C51633298BACD100336AFC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F5C51632298BACD100336AFC /* Alamofire */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,7 @@
 		F5863611298A5EE300A4E32B /* UserGeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5863615298A5EE300A4E32B /* UserGeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratorUITests.swift; sourceTree = "<group>"; };
 		F5863617298A5EE300A4E32B /* UserGeneratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F58C11E9298C904700D784A3 /* ProfilingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58C11E6298C8FA200D784A3 /* URLImage in Frameworks */,
+				F58C11E8298C8FA200D784A3 /* URLImageStore in Frameworks */,
 				F5C51633298BACD100336AFC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +105,7 @@
 			children = (
 				F58635F9298A5EE100A4E32B /* UserGeneratorApp.swift */,
 				F58635FB298A5EE100A4E32B /* ContentView.swift */,
+				F58C11E9298C904700D784A3 /* ProfilingView.swift */,
 				F58635FD298A5EE300A4E32B /* Assets.xcassets */,
 				F5863602298A5EE300A4E32B /* UserGenerator.entitlements */,
 				F58635FF298A5EE300A4E32B /* Preview Content */,
@@ -149,6 +156,8 @@
 			name = UserGenerator;
 			packageProductDependencies = (
 				F5C51632298BACD100336AFC /* Alamofire */,
+				F58C11E5298C8FA200D784A3 /* URLImage */,
+				F58C11E7298C8FA200D784A3 /* URLImageStore */,
 			);
 			productName = UserGenerator;
 			productReference = F58635F6298A5EE100A4E32B /* UserGenerator.app */;
@@ -224,6 +233,7 @@
 			mainGroup = F58635ED298A5EE100A4E32B;
 			packageReferences = (
 				F5C51631298BACD100336AFC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F58C11E4298C8FA200D784A3 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = F58635F7298A5EE100A4E32B /* Products */;
 			projectDirPath = "";
@@ -268,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F58635FC298A5EE100A4E32B /* ContentView.swift in Sources */,
+				F58C11EA298C904700D784A3 /* ProfilingView.swift in Sources */,
 				F58635FA298A5EE100A4E32B /* UserGeneratorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +446,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.study.UserGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,6 +472,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.study.UserGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -578,6 +591,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F58C11E4298C8FA200D784A3 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		F5C51631298BACD100336AFC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -589,6 +610,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F58C11E5298C8FA200D784A3 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F58C11E4298C8FA200D784A3 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		F58C11E7298C8FA200D784A3 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F58C11E4298C8FA200D784A3 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
 		F5C51632298BACD100336AFC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F5C51631298BACD100336AFC /* XCRemoteSwiftPackageReference "Alamofire" */;

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Alamofire
 
 struct Menu: View {
     @Binding var title: String
@@ -99,8 +98,7 @@ struct ContentView: View {
             .padding(.bottom, 10)
             //새로운 유저 불러오는 버튼
             Button {
-//                newUser()
-                getTest()
+                newUser()
             } label: {
                 Text("New")
             }
@@ -114,20 +112,6 @@ struct ContentView: View {
         profileImg = "person"
     }
     
-    //api test
-//    func getTest() {
-//            let url = "https://jsonplaceholder.typicode.com/todos/1"
-//            AF.request(url,
-//                       method: .get,
-//                       parameters: nil,
-//                       encoding: URLEncoding.default,
-//                       headers: ["Content-Type":"application/json", "Accept":"application/json"])
-//            .validate(statusCode: 200..<300)
-//            .validate(contentType: ["application/json"])
-//            .responseDecodable { (json) in
-//                print(json)
-//            }
-//        }
 }
 
 struct ContentView_Previews: PreviewProvider {
