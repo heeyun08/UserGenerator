@@ -21,7 +21,9 @@ struct ProfileImgView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-            
+            .frame(width: 200, height: 200)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(.yellow, lineWidth: 2))
         }
     }
 }

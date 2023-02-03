@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F57714A6298CC0F400081CDF /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57714A5298CC0F400081CDF /* UserInfoView.swift */; };
 		F58635FA298A5EE100A4E32B /* UserGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58635F9298A5EE100A4E32B /* UserGeneratorApp.swift */; };
 		F58635FC298A5EE100A4E32B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58635FB298A5EE100A4E32B /* ContentView.swift */; };
 		F58635FE298A5EE300A4E32B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58635FD298A5EE300A4E32B /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F57714A5298CC0F400081CDF /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		F58635F6298A5EE100A4E32B /* UserGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58635F9298A5EE100A4E32B /* UserGeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratorApp.swift; sourceTree = "<group>"; };
 		F58635FB298A5EE100A4E32B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F57714A8298CCA6B00081CDF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F57714A9298CCA7600081CDF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F58C11E9298C904700D784A3 /* ProfilingView.swift */,
+				F57714A5298CC0F400081CDF /* UserInfoView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		F58635ED298A5EE100A4E32B = {
 			isa = PBXGroup;
 			children = (
@@ -103,9 +121,10 @@
 		F58635F8298A5EE100A4E32B /* UserGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				F57714A9298CCA7600081CDF /* UI */,
+				F57714A8298CCA6B00081CDF /* Data */,
 				F58635F9298A5EE100A4E32B /* UserGeneratorApp.swift */,
 				F58635FB298A5EE100A4E32B /* ContentView.swift */,
-				F58C11E9298C904700D784A3 /* ProfilingView.swift */,
 				F58635FD298A5EE300A4E32B /* Assets.xcassets */,
 				F5863602298A5EE300A4E32B /* UserGenerator.entitlements */,
 				F58635FF298A5EE300A4E32B /* Preview Content */,
@@ -280,6 +299,7 @@
 				F58635FC298A5EE100A4E32B /* ContentView.swift in Sources */,
 				F58C11EA298C904700D784A3 /* ProfilingView.swift in Sources */,
 				F58635FA298A5EE100A4E32B /* UserGeneratorApp.swift in Sources */,
+				F57714A6298CC0F400081CDF /* UserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
