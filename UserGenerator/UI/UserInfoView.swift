@@ -11,22 +11,22 @@ import SwiftUI
 struct Menu: View {
     @Binding var title: String
     @Binding var info: String
-    
-    var imgName = ""
+    var randomUser: RandomUser
+    var btnName = ""
     
     var body: some View {
         Button {
-            menuChange(img: imgName)
+            menuChange(btn: btnName)
         } label: {
-            Image(systemName: imgName)
+            Image(systemName: btnName)
                 .frame(width: 30, height: 20)
         }
     }
-    func menuChange(img: String) {
-        switch img{
+    func menuChange(btn: String) {
+        switch btn{
         case "person":
             title = "Hi, My name is"
-            info = "Kwon Hee Yun"
+            info = randomUser.name.description
         case "mail":
             title = "My email address is"
             info = "heeyun@example.com"
@@ -48,33 +48,27 @@ struct Menu: View {
     }
 }
 
-struct MyBtnStyle: ButtonStyle {
-    var btnColor: Color = .green
-    var btnRadius: CGFloat = 5
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundColor(.white)
-            .padding(.horizontal, 30)
-            .padding(10)
-            .background(RoundedRectangle(cornerRadius: btnRadius).fill(btnColor))
-            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
-    }
-}
 
 struct UserInfoView: View {
+    var randomUser: RandomUser
+    @State private var info = " "
+    
+    init(_ randomUser: RandomUser) {
+        self.randomUser = randomUser
+        self.info = randomUser.name.description //???????
+    }
+    
     @State private var title = "Hi, My name is"
-    @State private var info = "Hong Gil Dong" //api 받아오기
-    @State private var profileImg = "person" //api 받아오기
     
     private let btnImg = [
         "person", "mail", "calendar",
         "map", "phone", "lock",
     ]
     var body: some View {
+//        var user = randomUser
         VStack{
             //프로필 이미지
-            ProfileImgView(imgUrl: URL(string: "https://randomuser.me/api/portraits/men/11.jpg")!)
+            ProfileImgView(imgUrl: randomUser.profileImgUrl)
             //유저 정보
             Text(title)
                 .foregroundColor(.gray)
@@ -84,29 +78,19 @@ struct UserInfoView: View {
             //메뉴 버튼
             HStack(spacing: 20){
                 ForEach(0..<6, id: \.self) { i in
-                    Menu(title: $title, info: $info, imgName: btnImg[i])
+                    Menu(title: $title, info: $info, randomUser: randomUser, btnName: btnImg[i])
                 }
             }
             .padding(.bottom, 10)
-            //새로운 유저 불러오는 버튼
-            Button {
-                newUser()
-            } label: {
-                Text("New")
-            }
-            .buttonStyle(MyBtnStyle())
+            
         }
         .padding(.horizontal, 100)
         .padding(50)
-    }
-    func newUser() {
-        //todo: "New" btton action
-        profileImg = "person"
     }
 }
 
 struct UserInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        UserInfoView()
+        UserInfoView(RandomUser.getDummy())
     }
 }

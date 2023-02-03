@@ -1,0 +1,70 @@
+//
+//  ResponseData.swift
+//  UserGenerator
+//
+//  Created by netid on 2023/02/03.
+//
+
+import Foundation
+
+struct RandomUser: Codable, Identifiable, CustomStringConvertible {
+    var id = UUID()
+    var name: Name
+    var picture: Picture
+    var profileImgUrl: URL {
+        get {
+            URL(string: picture.medium)!
+        }
+    }
+    private enum CodingKeys: String, CodingKey {
+        case name, picture
+    }
+    static func getDummy() -> Self {
+        return RandomUser(name: Name.getDummy(), picture: Picture.getDummy())
+    }
+}
+
+struct Name: Codable, CustomStringConvertible {
+    var title: String
+    var first: String
+    var last: String
+    var description: String {
+        return "\(first) \(last)"
+    }
+    static func getDummy() -> Self {
+        return Name(title: "연구원", first: "Heeyun", last: "Kwon")
+    }
+}
+
+struct Picture: Codable, CustomStringConvertible {
+    var large: String
+    var medium: String
+    var thumbnail: String
+    static func getDummy() -> Self {
+        return Picture(large: "https://randomuser.me/api/portraits/women/46.jpg",
+                       medium: "https://randomuser.me/api/portraits/women/46.jpg",
+                       thumbnail: "https://randomuser.me/api/portraits/women/46.jpg")
+    }
+}
+
+struct Info: Codable {
+    var seed: String
+    var resultsCount: Int
+    var page: Int
+    var version: String
+    private enum CodingKeys: String, CodingKey {
+        case seed = "seed"
+        case resultsCount = "results"
+        case page = "page"
+        case version = "version"
+    }
+}
+
+struct RandomUserResponse: Codable, CustomStringConvertible {
+    var results: [RandomUser]
+    var info: Info
+    //description custom
+    var description: String {
+        return "results.count: \(results.count) info: \(info.seed)"
+    }
+}
