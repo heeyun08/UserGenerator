@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// "New" Button Style
 struct MyBtnStyle: ButtonStyle {
     var btnColor: Color = .green
     var btnRadius: CGFloat = 5
@@ -26,20 +27,21 @@ struct ContentView: View {
     @ObservedObject var randomUserViewModel = RandomUserViewModel()
     
     var body: some View {
-        ForEach(randomUserViewModel.randomUsers) { aRandomUser in
-            UserInfoView(aRandomUser)
+        VStack(spacing: 0){
+            ForEach(randomUserViewModel.randomUsers) { aRandomUser in
+                UserInfoView(aRandomUser)
+            }
+            // 새로운 유저 불러오는 버튼
+            Button("New") {
+                randomUserViewModel.fetchRandomUsers()
+            }
+            .buttonStyle(MyBtnStyle())
+            .frame(width: 200, height: 150)
         }
-        // 새로운 유저 불러오는 버튼
-        Button {
-            randomUserViewModel.fetchRandomUsers()
-        } label: {
-            Text("New")
-        }
-        .buttonStyle(MyBtnStyle())
     }
-    func logPrint() {
-        dump(randomUserViewModel.randomUsers)
-    }
+//    func logPrint() {
+//        dump(randomUserViewModel.randomUsers)
+//    }
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -16,11 +16,18 @@ struct RandomUser: Codable, Identifiable, CustomStringConvertible {
             URL(string: picture.medium)!
         }
     }
+    var location: Location
+    var email: String
+    var login: Login
+    var dob: Dob
+    var phone: String
     private enum CodingKeys: String, CodingKey {
-        case name, picture
+        case name, location, email, login, dob, phone, picture
     }
+    
+    //dummy data
     static func getDummy() -> Self {
-        return RandomUser(name: Name.getDummy(), picture: Picture.getDummy())
+        return RandomUser(name: Name.getDummy(), picture: Picture.getDummy(), location: Location.init(street: Street.getDummy()), email: "HY08@example.com", login: Login.getDummy(), dob: Dob.getDummy(), phone: "010-1234-5678")
     }
 }
 
@@ -44,6 +51,44 @@ struct Picture: Codable, CustomStringConvertible {
         return Picture(large: "https://randomuser.me/api/portraits/women/46.jpg",
                        medium: "https://randomuser.me/api/portraits/women/46.jpg",
                        thumbnail: "https://randomuser.me/api/portraits/women/46.jpg")
+    }
+}
+
+struct Location: Codable {
+    var street: Street
+    private enum CodingKeys: String, CodingKey {
+        case street
+    }
+}
+
+struct Street: Codable, CustomStringConvertible {
+    var number: Int
+    var name: String
+    var description: String {
+        return "\(number) \(name)"
+    }
+    static func getDummy() -> Self {
+        return Street(number: 63, name: "Netid")
+    }
+}
+
+struct Login: Codable {
+    var password: String
+    private enum CodingKeys: String, CodingKey {
+        case password
+    }
+    static func getDummy() -> Self {
+        return Login(password: "mylife")
+    }
+}
+
+struct Dob: Codable {
+    var date: String
+    private enum CodingKeys: String, CodingKey {
+        case date
+    }
+    static func getDummy() -> Self {
+        return Dob(date: "1999-01-19T09:25:02.837Z")
     }
 }
 

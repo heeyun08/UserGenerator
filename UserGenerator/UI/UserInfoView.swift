@@ -19,7 +19,7 @@ struct Menu: View {
             menuChange(btn: btnName)
         } label: {
             Image(systemName: btnName)
-                .frame(width: 30, height: 20)
+                .frame(width: 50, height: 20)
         }
     }
     func menuChange(btn: String) {
@@ -29,19 +29,19 @@ struct Menu: View {
             info = randomUser.name.description
         case "mail":
             title = "My email address is"
-            info = "heeyun@example.com"
+            info = randomUser.email
         case "calendar":
             title = "My birthday is"
-            info = "8/16/2000"
+            info = randomUser.dob.date
         case "map":
             title = "My address is"
-            info = "netid"
+            info = randomUser.location.street.description
         case "phone":
             title = "My phone number is"
-            info = "010-1234-5678"
+            info = randomUser.phone
         case "lock":
             title = "My password is"
-            info = "mylife"
+            info = randomUser.login.password
         default:
             break
         }
@@ -55,7 +55,7 @@ struct UserInfoView: View {
     
     init(_ randomUser: RandomUser) {
         self.randomUser = randomUser
-        self.info = randomUser.name.description //???????
+//        self.info = randomUser.name.description //???????
     }
     
     @State private var title = "Hi, My name is"
@@ -65,7 +65,6 @@ struct UserInfoView: View {
         "map", "phone", "lock",
     ]
     var body: some View {
-//        var user = randomUser
         VStack{
             //프로필 이미지
             ProfileImgView(imgUrl: randomUser.profileImgUrl)
@@ -75,17 +74,16 @@ struct UserInfoView: View {
                 .padding(.top, 10)
             Text(info)
                 .font(.largeTitle)
+                .padding(.bottom, 20)
             //메뉴 버튼
             HStack(spacing: 20){
                 ForEach(0..<6, id: \.self) { i in
                     Menu(title: $title, info: $info, randomUser: randomUser, btnName: btnImg[i])
                 }
             }
-            .padding(.bottom, 10)
-            
         }
         .padding(.horizontal, 100)
-        .padding(50)
+        .padding(.top, 50)
     }
 }
 
