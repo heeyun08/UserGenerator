@@ -8,15 +8,12 @@
 import Foundation
 import SwiftUI
 
-/*Todo
- - 전화번호 포맷 설정
- */
-
 struct Menu: View {
     @Binding var title: String
     @Binding var info: String
     var randomUser: RandomUser
     var btnName = ""
+    @Binding var update: Bool
     
     var body: some View {
         Button {
@@ -27,6 +24,7 @@ struct Menu: View {
         }
     }
     func menuChange(btn: String) {
+        update = true
         switch btn{
         case "person":
             title = "Hi, My name is"
@@ -55,10 +53,10 @@ struct Menu: View {
 
 struct UserInfoView: View {
     var randomUser: RandomUser
+    @State private var update = false
     
     init(_ randomUser: RandomUser) {
         self.randomUser = randomUser
-//        self.info = randomUser.name.description //???????
     }
     
     @State private var title = "Hi, My name is"
@@ -68,6 +66,7 @@ struct UserInfoView: View {
         "person", "mail", "calendar",
         "map", "phone", "lock",
     ]
+    
     var body: some View {
         VStack{
             //프로필 이미지
@@ -76,13 +75,13 @@ struct UserInfoView: View {
             Text(title)
                 .foregroundColor(.gray)
                 .padding(.top, 10)
-            Text(info)
+            Text(update ? info : randomUser.name.description)
                 .font(.largeTitle)
                 .padding(.bottom, 20)
             //메뉴 버튼
             HStack(spacing: 20){
                 ForEach(0..<6, id: \.self) { i in
-                    Menu(title: $title, info: $info, randomUser: randomUser, btnName: btnImg[i])
+                    Menu(title: $title, info: $info, randomUser: randomUser, btnName: btnImg[i], update: $update)
                 }
             }
         }
