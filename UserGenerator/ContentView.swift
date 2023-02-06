@@ -39,9 +39,6 @@ struct ContentView: View {
             .frame(width: 200, height: 150)
         }
     }
-//    func logPrint() {
-//        dump(randomUserViewModel.randomUsers)
-//    }
 }
 
 struct ContentView_Previews: PreviewProvider {

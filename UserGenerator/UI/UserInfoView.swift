@@ -37,14 +37,12 @@ struct Menu: View {
         case "calendar":
             title = "My birthday is"
             info = randomUser.dob.description
-            dump(info)
         case "map":
             title = "My address is"
             info = randomUser.location.street.description
         case "phone":
             title = "My phone number is"
-            info = randomUser.phone
-            dump(info)
+            info = randomUser.description
         case "lock":
             title = "My password is"
             info = randomUser.login.password

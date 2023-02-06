@@ -23,13 +23,14 @@ struct RandomUser: Codable, Identifiable, CustomStringConvertible {
     var phone: String
     var description: String {
         let tmp = phone
-        var num = tmp.components(separatedBy: ["-","(",")"," "])
-        let ttmp = Array(num.joined())
-//        let des = "(\(num[0..<3])) \(num[3..<5])-\(num[5..<10])"
-        dump(num)
-        dump(ttmp)
-        let des = num.joined()
-        return des
+        let comp = tmp.components(separatedBy: ["-","(",")"," "])
+        let num = Array(comp.joined())
+        
+        let first = String(num[0..<3])
+        let mid = String(num[3..<6])
+        let last = num.count >= 10 ? String(num[5..<9]) : String(num[5..<num.count])
+
+        return "(\(first)) \(mid)-\(last)"
     }
     private enum CodingKeys: String, CodingKey {
         case name, location, email, login, dob, phone, picture
@@ -98,9 +99,8 @@ struct Dob: Codable, CustomStringConvertible {
         var tmp = date
         tmp.removeLast(14)
         let birth = tmp.components(separatedBy: "-")
-        let des = "\(birth[1])/\(birth[2])/\(birth[0])"
         
-        return des
+        return "\(birth[1])/\(birth[2])/\(birth[0])"
     }
     private enum CodingKeys: String, CodingKey {
         case date
