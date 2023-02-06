@@ -49,6 +49,8 @@ struct Name: Codable, CustomStringConvertible {
     var description: String {
         return "\(first) \(last)"
     }
+    
+    //dummy data
     static func getDummy() -> Self {
         return Name(title: "연구원", first: "Heeyun", last: "Kwon")
     }
@@ -58,6 +60,8 @@ struct Picture: Codable, CustomStringConvertible {
     var large: String
     var medium: String
     var thumbnail: String
+    
+    //dummy data
     static func getDummy() -> Self {
         return Picture(large: "https://randomuser.me/api/portraits/women/46.jpg",
                        medium: "https://randomuser.me/api/portraits/women/46.jpg",
@@ -78,6 +82,8 @@ struct Street: Codable, CustomStringConvertible {
     var description: String {
         return "\(number) \(name)"
     }
+    
+    //dummy data
     static func getDummy() -> Self {
         return Street(number: 63, name: "Netid")
     }
@@ -88,6 +94,8 @@ struct Login: Codable {
     private enum CodingKeys: String, CodingKey {
         case password
     }
+    
+    //dummy data
     static func getDummy() -> Self {
         return Login(password: "mylife")
     }
