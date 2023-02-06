@@ -8,6 +8,10 @@
 import Foundation
 import SwiftUI
 
+/*Todo
+ - 전화번호 포맷 설정
+ */
+
 struct Menu: View {
     @Binding var title: String
     @Binding var info: String
@@ -32,13 +36,15 @@ struct Menu: View {
             info = randomUser.email
         case "calendar":
             title = "My birthday is"
-            info = randomUser.dob.date
+            info = randomUser.dob.description
+            dump(info)
         case "map":
             title = "My address is"
             info = randomUser.location.street.description
         case "phone":
             title = "My phone number is"
             info = randomUser.phone
+            dump(info)
         case "lock":
             title = "My password is"
             info = randomUser.login.password
@@ -51,7 +57,6 @@ struct Menu: View {
 
 struct UserInfoView: View {
     var randomUser: RandomUser
-    @State private var info = " "
     
     init(_ randomUser: RandomUser) {
         self.randomUser = randomUser
@@ -59,6 +64,7 @@ struct UserInfoView: View {
     }
     
     @State private var title = "Hi, My name is"
+    @State private var info = " "
     
     private let btnImg = [
         "person", "mail", "calendar",

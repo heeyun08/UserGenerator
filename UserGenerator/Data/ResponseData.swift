@@ -13,7 +13,7 @@ struct RandomUser: Codable, Identifiable, CustomStringConvertible {
     var picture: Picture
     var profileImgUrl: URL {
         get {
-            URL(string: picture.medium)!
+            URL(string: picture.large)!
         }
     }
     var location: Location
@@ -21,6 +21,16 @@ struct RandomUser: Codable, Identifiable, CustomStringConvertible {
     var login: Login
     var dob: Dob
     var phone: String
+    var description: String {
+        let tmp = phone
+        var num = tmp.components(separatedBy: ["-","(",")"," "])
+        let ttmp = Array(num.joined())
+//        let des = "(\(num[0..<3])) \(num[3..<5])-\(num[5..<10])"
+        dump(num)
+        dump(ttmp)
+        let des = num.joined()
+        return des
+    }
     private enum CodingKeys: String, CodingKey {
         case name, location, email, login, dob, phone, picture
     }
@@ -82,8 +92,16 @@ struct Login: Codable {
     }
 }
 
-struct Dob: Codable {
+struct Dob: Codable, CustomStringConvertible {
     var date: String
+    var description: String {
+        var tmp = date
+        tmp.removeLast(14)
+        let birth = tmp.components(separatedBy: "-")
+        let des = "\(birth[1])/\(birth[2])/\(birth[0])"
+        
+        return des
+    }
     private enum CodingKeys: String, CodingKey {
         case date
     }
