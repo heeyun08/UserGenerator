@@ -8,49 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct Menu: View {
-    @Binding var title: String
-    @Binding var info: String
-    var randomUser: RandomUser
-    var btnName = ""
-    @Binding var update: Bool
-    
-    var body: some View {
-        Button {
-            menuChange(btn: btnName)
-        } label: {
-            Image(systemName: btnName)
-                .frame(width: 50, height: 20)
-        }
-    }
-    func menuChange(btn: String) {
-        update = true
-        switch btn{
-        case "person":
-            title = "Hi, My name is"
-            info = randomUser.name.description
-        case "mail":
-            title = "My email address is"
-            info = randomUser.email
-        case "calendar":
-            title = "My birthday is"
-            info = randomUser.dob.description
-        case "map":
-            title = "My address is"
-            info = randomUser.location.street.description
-        case "phone":
-            title = "My phone number is"
-            info = randomUser.description
-        case "lock":
-            title = "My password is"
-            info = randomUser.login.password
-        default:
-            break
-        }
-    }
-}
-
-
 struct UserInfoView: View {
     var randomUser: RandomUser
     
