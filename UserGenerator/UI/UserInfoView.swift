@@ -53,14 +53,14 @@ struct Menu: View {
 
 struct UserInfoView: View {
     var randomUser: RandomUser
-    @State private var update = false
     
     init(_ randomUser: RandomUser) {
         self.randomUser = randomUser
     }
     
     @State private var title = "Hi, My name is"
-    @State private var info = " "
+    @State private var info = ""
+    @State private var update = false
     
     private let btnImg = [
         "person", "mail", "calendar",

@@ -22,9 +22,7 @@ struct RandomUser: Codable, Identifiable, CustomStringConvertible {
     var dob: Dob
     var phone: String
     var description: String {
-        let tmp = phone
-        let comp = tmp.components(separatedBy: ["-","(",")"," "])
-        let num = Array(comp.joined())
+        let num = Array(phone.components(separatedBy: ["-","(",")"," "]).joined())
         
         let first = String(num[0..<3])
         let mid = String(num[3..<6])
