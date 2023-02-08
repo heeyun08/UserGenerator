@@ -9,13 +9,11 @@ import Foundation
 import SwiftUI
 import URLImage
 
-
 struct ProfileImgView: View {
     var imgUrl: URL
     
     var body: some View {
         VStack{
-            
             URLImage(imgUrl) { image in
                 image
                     .resizable()

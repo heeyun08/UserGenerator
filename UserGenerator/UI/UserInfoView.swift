@@ -32,6 +32,7 @@ struct UserInfoView: View {
             Text(title)
                 .foregroundColor(.gray)
                 .padding(.top, 10)
+            //새로운 유저 불러올 때, 화면에 이름 바로 표시
             Text(update ? info : randomUser.name.description)
                 .font(.largeTitle)
                 .padding(.bottom, 20)

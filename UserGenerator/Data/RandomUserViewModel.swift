@@ -15,6 +15,7 @@ class RandomUserViewModel: ObservableObject {
     
     @Published var randomUsers = [RandomUser]()
     
+    //RandomUserAPI 주소, 1명만 받아옴
     var baseUrl = "https://randomuser.me/api/?results=1"
     
     init() {
@@ -26,13 +27,13 @@ class RandomUserViewModel: ObservableObject {
     func fetchRandomUsers() {
         AF.request(baseUrl)
             .publishDecodable(type: RandomUserResponse.self)
-            .compactMap { $0.value } //Combine -> 자동으로 unrapping
+            .compactMap { $0.value } //Combine, 자동으로 unrapping
             .map { $0.results } //results만 가져옴
             .sink (receiveCompletion: { completion in
                 print("데이터 스트림 완료")
             }, receiveValue: { receiveValue in //receiveValue: [RandomUser]
                 print("받은 값: \(receiveValue.count)")
-                //unrapping해서 RandomUserPesponse에 있는 results 바로 가져올 수 있음
+                //unrapping했기 때문에 RandomUserResponse에 있는 results 바로 가져올 수 있음
                 self.randomUsers = receiveValue
             }).store(in: &subscription) //구독이 완료됐을때 메모리에 날려줌
     }

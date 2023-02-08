@@ -13,6 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 0){
+            //받아온 데이터 UserInfoView로 넘겨줌
             ForEach(randomUserViewModel.randomUsers) { aRandomUser in
                 UserInfoView(aRandomUser)
             }

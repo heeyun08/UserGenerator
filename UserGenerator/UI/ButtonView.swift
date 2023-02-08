@@ -25,7 +25,7 @@ struct Menu: View {
         }
     }
     
-    // Button action
+    //Button action
     func menuChange(btn: String) {
         update = true
         switch btn{
@@ -53,7 +53,7 @@ struct Menu: View {
     }
 }
 
-// "New" Button Style
+//"New" Button Style
 struct NewBtnStyle: ButtonStyle {
     var btnColor: Color = .green
     var btnRadius: CGFloat = 5
