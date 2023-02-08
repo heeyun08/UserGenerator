@@ -21,6 +21,7 @@ struct RandomUser: Codable, Identifiable, CustomStringConvertible {
     var login: Login
     var dob: Dob
     var phone: String
+    //전화번호 Data 가공
     var description: String {
         let num = Array(phone.components(separatedBy: ["-","(",")"," "]).joined())
         
@@ -41,29 +42,30 @@ struct RandomUser: Codable, Identifiable, CustomStringConvertible {
 }
 
 struct Name: Codable, CustomStringConvertible {
-    var title: String
     var first: String
     var last: String
     var description: String {
         return "\(first) \(last)"
     }
+    private enum CodingKeys: String, CodingKey {
+        case first, last
+    }
     
     //dummy data
     static func getDummy() -> Self {
-        return Name(title: "연구원", first: "Heeyun", last: "Kwon")
+        return Name(first: "Heeyun", last: "Kwon")
     }
 }
 
 struct Picture: Codable, CustomStringConvertible {
     var large: String
-    var medium: String
-    var thumbnail: String
+    private enum CodingKeys: String, CodingKey {
+        case large
+    }
     
     //dummy data
     static func getDummy() -> Self {
-        return Picture(large: "https://randomuser.me/api/portraits/women/46.jpg",
-                       medium: "https://randomuser.me/api/portraits/women/46.jpg",
-                       thumbnail: "https://randomuser.me/api/portraits/women/46.jpg")
+        return Picture(large: "https://randomuser.me/api/portraits/women/46.jpg")
     }
 }
 
@@ -111,6 +113,8 @@ struct Dob: Codable, CustomStringConvertible {
     private enum CodingKeys: String, CodingKey {
         case date
     }
+    
+    //dummy data
     static func getDummy() -> Self {
         return Dob(date: "1999-01-19T09:25:02.837Z")
     }
